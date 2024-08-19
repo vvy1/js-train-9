@@ -8,11 +8,18 @@
  */
 function findElementGreaterThan(arr, num) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо undefined
-  // повертаємо undefined
+  if (!Array.isArray(arr)) {
+    return undefined;
+  }
   // Використовуємо метод find для пошуку першого елементу, який є більшим за задане число num.
+  const foundElement = arr.find((element) => element > num);
   // Перевіряємо чи є елемент який задовільняє умову
-  //Якщо так повертаємо елемент
-  // Якщо ні повертаємо рядок Числа яке задовільняе умову не знайдено
+  if (foundElement !== undefined) {
+    return foundElement;
+  } else {
+    // Якщо елемент не знайдено, повертаємо відповідний рядок
+    return "Числа яке задовільняе умову не знайдено";
+  }
 }
 
 console.log("Завдання: 1  ==============================");
@@ -29,8 +36,14 @@ console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
  */
 function findIndexByProperty(arr, name) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо -1
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
   // Використовуємо метод findIndex для пошуку індексу об'єкта, властивість 'name' якого співпадає з заданим іменем.
+  const foundIndex = arr.findIndex((obj) => obj.name === name);
+
   // Повертаємо знайдений індекс або -1, якщо об'єкт не знайдено.
+  return foundIndex;
 }
 
 console.log("Завдання: 2  ==============================");
@@ -55,8 +68,15 @@ console.log(
  */
 function findLastEvenNumber(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою метода findLast знаходимо останнє парне число в масиві.
+  const lastEvenNumber = arr.findLast((num) => num % 2 === 0);
   // Повертаємо знайдене число або 'Парних чисел не знайдено', якщо таке число не знайдено.
+  return lastEvenNumber !== undefined
+    ? lastEvenNumber
+    : "Парних чисел не знайдено";
 }
 
 console.log("Завдання: 3 ==============================");
@@ -73,9 +93,15 @@ console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
  */
 function getSubArrayAndConvertToString(arr, startIdx) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою методу slice() отримуємо підмасив від заданого індексу до кінця масиву.
+  const subArray = arr.slice(startIdx);
   // За допомогою методу join() конвертуємо підмасив в рядок.
+  const subArrayString = subArray.join(" ");
   // Повертаємо рядок.
+  return subArrayString;
 }
 
 console.log("Завдання: 4 ==============================");
@@ -97,9 +123,15 @@ console.log(
  */
 function getArrayKeys(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою методу keys() отримуємо об'єкт ітератора, який містить ключі масиву.
+  const iterator = arr.keys();
   // Конвертуємо ітератор в масив за допомогою методу from.
+  const arrayKeys = Array.from(iterator);
   // Повертаємо масив ключів.
+  return arrayKeys;
 }
 
 console.log("Завдання: 5  ==============================");
