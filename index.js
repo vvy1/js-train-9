@@ -147,10 +147,17 @@ console.log(getArrayKeys(["яблуко", "банан", "апельсин"])); /
  */
 function getPositiveArrayValues(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою методу values() отримуємо об'єкт ітератора, який містить значення масиву.
+  const iterator = arr.values();
   // Конвертуємо ітератор в масив.
+  const arrayValues = Array.from(iterator);
   // За допомогою методу filter() отримуємо масив лише з додатніми значеннями.
+  const positiveArrayValues = arrayValues.filter((value) => value > 0);
   // Повертаємо масив додатніх значень.
+  return positiveArrayValues;
 }
 
 console.log("Завдання: 6  ==============================");
@@ -167,9 +174,15 @@ console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
  */
 function removeAndDouble(arr, startIdx) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою методу splice() видаляємо елементи масиву починаючи з заданого індексу.
+  arr.splice(startIdx);
   // За допомогою методу map() подвоюємо кожен елемент масиву.
+  const doubledArray = arr.map((num) => num * 2);
   // Повертаємо масив подвоєних елементів.
+  return doubledArray;
 }
 
 console.log("Завдання: 7 ==============================");
@@ -185,8 +198,13 @@ console.log(removeAndDouble([1, 2, 3, 4, 5], 2)); // Виведе [ 2, 4 ]
  */
 function sumAndPrint(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // За допомогою методу reduce() обчислюємо суму елементів масиву.
+  const sumElements = arr.reduce((sum) => sum + sum);
   // За допомогою методу forEach() виводимо кожен елемент масиву в консоль.
+
   // Повертаємо суму елементів масиву.
 }
 
