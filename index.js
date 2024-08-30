@@ -343,8 +343,13 @@ console.log(insertElementAt([1, 2, 3, 4, 5], 2, "три")); // Виведе [1, 
  */
 function flattenArray(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
   // Використовуємо метод flat з параметром Infinity, щоб "випрямити" масив на будь-яку глибину вкладеності
+  let flattenedArray = arr.flat(Infinity);
   // Повертаємо "випрямлений" масив
+  return flattenedArray;
 }
 
 console.log("Завдання: 13 ==============================");
@@ -360,8 +365,13 @@ console.log(flattenArray([1, [2, [3, [4, [5]]]]])); // Виведе [1, 2, 3, 4,
  */
 function expandArrayByN(arr, n) {
   // Перевіряємо, чи вхідні параметри є масивом та числом відповідно, якщо ні повертаємо 'Перший вхідний параметр має бути масивом, другий - числом'
+  if (!Array.isArray(arr) && !Number.isNumber(n)) {
+    return "Перший вхідний параметр має бути масивом, другий - числом";
+  }
   // Використовуємо метод flatMap для створення нового масиву, де кожне число повторюється n разів
+  let numRepeat = arr.flatMap((element) => Array(n).fill(element));
   // Повертаємо розширений масив
+  return numRepeat;
 }
 
 console.log("Завдання: 14 ==============================");
@@ -378,10 +388,17 @@ console.log(expandArrayByN([1, 2, 3], 3)); // Виведе [1, 1, 1, 2, 2, 2, 3,
   */
 function findLongestWord(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий рядок
+  if (!Array.isArray(arr)) {
+    return "";
+  }
   // Використовуємо метод reduce() для знаходження найдовшого слова
   // Порівнюємо довжину поточного слова з довжиною найдовшого слова
   // Інакше повертаємо попереднє найдовше слово без змін
+  const longestWord = arr.reduce((longest, currentWord) => {
+    return currentWord.length > longest.length ? currentWord : longest;
+  }, "");
   // Повертаємо найдовше слово
+  return longestWord;
 }
 console.log("Завдання: 15 ==============================");
 console.log(findLongestWord(["apple", "banana", "pineapple", "watermelon"])); // Виведе 'watermelon'
@@ -397,9 +414,16 @@ console.log(findLongestWord(["apple", "banana", "pineapple", "watermelon"])); //
 */
 function findDuplicateElements(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
+  if (!Array.isArray(arr)) {
+    return [];
+  }
   // Використовуємо метод filter() для вибірки лише дубльованих елементів
   // Перевіряємо, чи є індекс поточного елемента відмінним від індексу першого входження елемента, та повертаємо результат
+  const duplicateElements = arr.filter((element, index) => {
+    return arr.indexOf(element) !== index;
+  });
   // Повертаємо новий масив з дубльованими елементами
+  return duplicateElements;
 }
 console.log("Завдання: 16 ==============================");
 console.log(findDuplicateElements([1, 2, 3, 4, 2, 5, 6, 3, 5])); // Виведе [2, 3, 5]
