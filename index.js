@@ -439,10 +439,17 @@ console.log(findDuplicateElements([1, 2, 3, 4, 2, 5, 6, 3, 5])); // Виведе
 */
 function capitalizeWords(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
+  if (!Array.isArray(arr)) {
+    return [];
+  }
   // Використовуємо метод map() для перетворення кожного слова в рядку з першою великою літерою
-  // Перетворюємо першу літеру слова у верхній регістр да додамо до неї всі символи слова крім першого
+  // Перетворюємо першу літеру слова у верхній регістр tа додамо до неї всі символи слова крім першого
   //Повертаємо слово
+  const capitalizedArray = arr.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
   // Повертаємо новий масив зі словами, у яких перша літера у верхньому регістрі
+  return capitalizedArray;
 }
 console.log("Завдання: 17 ==============================");
 console.log(capitalizeWords(["apple", "banana", "orange"])); // Виведе ['Apple', 'Banana', 'Orange']
@@ -459,9 +466,16 @@ console.log(capitalizeWords(["apple", "banana", "orange"])); // Виведе ['A
   */
 function calculateTotalPrice(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо 0
+  if (!Array.isArray(arr)) {
+    return 0;
+  }
   // Використовуємо метод reduce() для обчислення загальної ціни
   // Додаємо ціну товару до загальної суми та повертаємо результат
+  const totalPrice = arr.reduce((total, product) => {
+    return total + product.price;
+  }, 0);
   // Повертаємо загальну ціну всіх товарів
+  return totalPrice;
 }
 console.log("Завдання: 18 ==============================");
 console.log(
