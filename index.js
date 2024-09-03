@@ -498,8 +498,13 @@ console.log(
 */
 function findLastNegativeNumberIndex(arr) {
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо -1
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
   // Використовуємо метод findLastIndex() для знаходження індексу останнього входження від'ємного числа
+  const lastIndex = arr.findLastIndex((num) => num < 0);
   // Повертаємо індекс останнього від'ємного числа
+  return lastIndex;
 }
 console.log("Завдання: 19 ==============================");
 console.log(findLastNegativeNumberIndex([1, 2, -3, 4, -5, 6, -7])); // Виведе 6
